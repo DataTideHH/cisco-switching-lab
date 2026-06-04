@@ -1,7 +1,7 @@
 # macOS
 .DS_Store
 
-# Editor/IDE
+# Editor / IDE
 .idea/
 .vscode/
 
@@ -12,7 +12,7 @@
 *.bak
 *.backup
 
-# Private configs
+# Private configs and secrets
 configs/private/
 secrets/
 *.secret
