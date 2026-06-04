@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Editor/IDE
+.idea/
+.vscode/
+
+# Raw captures / sensitive exports
+*.pcap
+*.pcapng
+*.log
+*.bak
+*.backup
+
+# Private configs
+configs/private/
+secrets/
+*.secret
+*.key
+*.pem
+
+# Temporary files
+tmp/
+temp/
