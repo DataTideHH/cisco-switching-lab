@@ -1,0 +1,15 @@
+title: Cisco Switching Lab
+description: Physical Cisco Catalyst 3560CX lab for secure management, IOS maintenance and CCNA-oriented switching practice.
+theme: jekyll-theme-cayman
+show_downloads: false
+repository: DataTideHH/cisco-switching-lab
+url: https://datatidehh.github.io
+baseurl: /cisco-switching-lab
+lang: en
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
