@@ -1,70 +1,71 @@
-# Initial Baseline
+# Verified Switch Baseline
 
 ## Purpose
 
-Before changing any configuration, the initial state of both switches should be documented.
+A baseline captures the device state before and after changes. It supports troubleshooting, rollback decisions and reproducible documentation.
 
-This helps with:
+## Current Verified State
 
-- understanding the previous configuration
-- checking hardware and software versions
-- identifying interface names
-- identifying licensing and image details
-- safely resetting or reconfiguring the devices later
+The Catalyst 3560CX baseline was checked after the IOS maintenance work:
 
-## Catalyst 3560CX Baseline Commands
+- IOS `15.2(7)E14` booted successfully
+- bootloader `15.2(7r)E` active
+- primary and fallback boot images configured
+- console and SSH access verified
+- management SVI operational
+- active links negotiated at 1 Gbit/s full duplex
+- interface error counters showed no errors
+- hardware POST completed successfully
+- no relevant FAIL, ERROR or CRASH entries found in the checked logs
+- NTP synchronization and CET/CEST clock settings verified
 
-    enable
-    terminal length 0
-    show version
-    show inventory
-    show interfaces status
-    show ip interface brief
-    show vlan brief
-    show interfaces trunk
-    show spanning-tree summary
-    show power inline
-    show environment all
-    show flash:
-    show running-config
+## Baseline Command Set
 
-## Catalyst 2950SX Baseline Commands
+```text
+enable
+terminal length 0
+show version
+show inventory
+show boot
+show interfaces status
+show interfaces counters errors
+show ip interface brief
+show vlan brief
+show interfaces trunk
+show spanning-tree summary
+show power inline
+show environment all
+dir flash:
+show logging
+show clock detail
+show ntp associations
+show ntp status
+```
 
-    enable
-    terminal length 0
-    show version
-    show interfaces status
-    show vlan brief
-    show interfaces trunk
-    show spanning-tree summary
-    show flash:
-    show running-config
+## Change Validation Pattern
+
+For disruptive changes, use this sequence:
+
+1. capture the current state
+2. verify available storage and image compatibility
+3. verify file integrity
+4. define a rollback or fallback path
+5. keep console access available
+6. perform the change
+7. verify software, boot path, links, counters, logs and reachability
+8. save the configuration only after validation
 
 ## Redaction Rules
 
-Before committing command output to GitHub, redact:
+Before publishing output, remove or replace:
 
 - serial numbers
 - full MAC addresses
-- passwords
-- public IP addresses
-- private VPN addresses
+- credentials and password hashes
 - SSH keys
-- SNMP community strings
-- usernames if sensitive
+- real usernames where unnecessary
+- public, private and VPN addresses
+- hostnames and private interface descriptions
+- complete raw configurations
 
-## Storage
-
-Baseline outputs should be saved under:
-
-    configs/baseline/
-
-Suggested filenames:
-
-    3560cx-show-version.txt
-    3560cx-show-inventory.txt
-    3560cx-show-interfaces-status.txt
-    3560cx-show-vlan-brief.txt
-    2950sx-show-version.txt
-    2950sx-show-interfaces-status.txt
-    2950sx-show-vlan-brief.txt
+Use synthetic values or concise statements of verified outcomes instead of publishing raw device dumps.
