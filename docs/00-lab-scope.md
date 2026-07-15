@@ -2,42 +2,40 @@
 
 ## Goal
 
-This lab is designed as a small, realistic Cisco switching practice environment for CCNA-level topics.
+This lab is a small physical Cisco environment for CCNA-oriented switching, management and troubleshooting practice.
 
-The purpose is to understand and document fundamental switching concepts using physical hardware, not to build a production-grade enterprise network.
+The purpose is to connect networking theory with verified command-line work on real hardware while keeping experiments separated from the normal home network.
 
 ## Why This Lab Exists
 
-As part of my retraining as a Fachinformatiker für Daten- und Prozessanalyse, networking fundamentals are relevant because real data, BI and application environments depend on reliable network infrastructure.
+As part of my retraining as a Fachinformatiker für Daten- und Prozessanalyse, networking fundamentals matter because data platforms, BI systems and applications depend on reliable infrastructure.
 
-This lab helps connect theoretical CCNA concepts with practical command-line work on Cisco switches.
+The lab also provides the operational context for the related `network-operations-data-lab`, where sanitized network records are transformed into structured data, SQL checks and BI-oriented outputs.
 
 ## In Scope
 
-- Cisco IOS basics
-- switch inventory and baseline checks
+- Cisco IOS fundamentals
+- device inventory and baseline checks
+- console and SSH management
+- IOS maintenance and rollback preparation
+- NTP and log-time consistency
 - VLAN creation and verification
-- access ports and trunk ports
-- 802.1Q trunking
-- native VLAN considerations
-- STP basics
-- EtherChannel / LACP basics
-- switch management
+- access ports and 802.1Q trunks
+- STP and Layer 2 loop prevention
+- EtherChannel and LACP
 - basic switch hardening
 - inter-VLAN routing on the Catalyst 3560CX
-- troubleshooting and documentation
+- future router labs with routing, NAT, DHCP and ACLs
+- troubleshooting and reproducible documentation
 
 ## Out of Scope
 
-- production deployment
-- enterprise-grade network design
-- advanced routing protocols as a primary focus
-- security-sensitive configurations
-- publishing private network details
-- presenting this as a professional FISI production lab
+- presenting the lab as a production network
+- exposing private network details or credentials
+- uncontrolled experiments on the productive home LAN
+- simulating enterprise scale without a concrete learning purpose
+- presenting DataTideHH as a network consultancy
 
-## Intended Role in the Portfolio
+## Intended Portfolio Role
 
-This project demonstrates practical infrastructure understanding, careful documentation and a structured learning process.
-
-It is a supporting project for a Data/BI-oriented profile, not a change of specialization into network administration.
+This is a supporting infrastructure project for a Data/BI-oriented profile. It demonstrates technical care, controlled changes, validation, troubleshooting and documentation rather than a change of specialization into network administration.
