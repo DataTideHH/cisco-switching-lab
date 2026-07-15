@@ -2,6 +2,8 @@
 
 Physical Cisco Catalyst 3560CX lab documenting secure management, IOS maintenance, time synchronization and CCNA-oriented switching practice.
 
+Project page: https://datatidehh.github.io/cisco-switching-lab/
+
 ## Purpose
 
 This repository documents a small physical Cisco lab with an emphasis on reproducible procedures, verification and public-safe technical documentation.
