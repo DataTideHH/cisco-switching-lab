@@ -13,7 +13,7 @@ As part of my retraining as a Fachinformatiker für Daten- und Prozessanalyse, n
 The lab provides the physical network context for two connected portfolio layers:
 
 - the related `network-operations-data-lab`, where sanitized operational records are transformed into structured data, SQL checks and BI-oriented outputs
-- the planned `proxmox-virtualization-lab`, which will document a future dedicated virtualization host after suitable x86 hardware is available
+- the planned [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab), which will document a future dedicated virtualization host after suitable x86 hardware is available
 
 The Proxmox connection is currently an architecture roadmap only. This repository does not claim that a Proxmox host has already been installed or validated.
 
@@ -43,7 +43,7 @@ The Proxmox connection is currently an architecture roadmap only. This repositor
 - simulating enterprise scale without a concrete learning purpose
 - presenting DataTideHH as a network consultancy
 - documenting unverified Proxmox installation results
-- hypervisor, VM, LXC, storage or backup administration, which belongs in the future `proxmox-virtualization-lab`
+- hypervisor, VM, LXC, storage or backup administration, which belongs in the future [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab)
 
 ## Intended Portfolio Role
 

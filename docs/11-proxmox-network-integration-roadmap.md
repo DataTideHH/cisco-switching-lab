@@ -8,7 +8,7 @@ This document describes a future lab stage. A dedicated x86 host has not yet bee
 
 The future Proxmox host should provide a controlled service platform for virtualization, Linux administration, database and API labs. This Cisco repository covers only the physical and logical network connection required for that platform.
 
-The hypervisor itself will be documented separately in `proxmox-virtualization-lab`. Sanitized inventory and monitoring data will later be processed in `network-operations-data-lab`.
+The hypervisor itself will be documented separately in [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab). Sanitized inventory and monitoring data will later be processed in `network-operations-data-lab`.
 
 ## Staged Integration
 
@@ -79,7 +79,7 @@ The hypervisor itself will be documented separately in `proxmox-virtualization-l
 | Concern | Repository |
 |---|---|
 | Cisco switch ports, VLANs, trunks and reachability | `cisco-switching-lab` |
-| Proxmox installation, bridges, guests, storage and backups | `proxmox-virtualization-lab` |
+| Proxmox installation, bridges, guests, storage and backups | [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab) |
 | API exports, data modelling, checks and BI reporting | `network-operations-data-lab` |
 
 ## Portfolio Principle
