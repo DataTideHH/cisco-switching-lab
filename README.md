@@ -56,7 +56,7 @@ Real addresses, hostnames, serial numbers, MAC addresses, credentials and privat
 - future expansion with a second switch and a Cisco IOS/IOS XE router
 - staged network integration for a future Proxmox virtualization host
 
-The Proxmox-related work remains limited to network design, segmentation and validation. Hypervisor installation, VM and LXC lifecycle, storage, backup and API automation belong in the planned separate `proxmox-virtualization-lab` repository.
+The Proxmox-related work remains limited to network design, segmentation and validation. Hypervisor installation, VM and LXC lifecycle, storage, backup and API automation belong in the planned separate [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab) repository.
 
 ## Documentation
 
@@ -80,7 +80,7 @@ The Proxmox-related work remains limited to network design, segmentation and val
 
 This repository focuses on the physical device, Cisco CLI, switching concepts and operational maintenance.
 
-The planned `proxmox-virtualization-lab` will focus on the future virtualization host, virtual machines, LXC containers, storage, backup, access control and API-based inventory. It does not exist as an implemented hardware lab yet.
+The planned [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab) will focus on the future virtualization host, virtual machines, LXC containers, storage, backup, access control and API-based inventory. It does not exist as an implemented hardware lab yet.
 
 The related [network-operations-data-lab](https://github.com/DataTideHH/network-operations-data-lab) focuses on transforming sanitized operational records from network infrastructure and, later, virtualization infrastructure into structured sample data, Python workflows, SQL checks, data-quality reports and BI-oriented outputs.
 

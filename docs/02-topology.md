@@ -63,7 +63,7 @@ A future Proxmox integration should begin conservatively with one access VLAN. V
 ## Repository Boundaries
 
 - physical switch configuration, VLANs, trunks and reachability tests belong in `cisco-switching-lab`
-- hypervisor installation, virtual bridges, VM and LXC lifecycle, storage and backup belong in the planned `proxmox-virtualization-lab`
+- hypervisor installation, virtual bridges, VM and LXC lifecycle, storage and backup belong in the planned [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab)
 - sanitized infrastructure inventory, API exports, data-quality checks and BI outputs belong in `network-operations-data-lab`
 
 ## Design Principles
