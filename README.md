@@ -1,6 +1,6 @@
 # Cisco Switching Lab
 
-Physical Cisco Catalyst 3560CX lab documenting secure management, IOS maintenance, time synchronization and CCNA-oriented switching practice.
+Physical Cisco Catalyst 3560CX lab documenting secure management, IOS maintenance, time synchronization, CCNA-oriented switching practice and the planned network foundation for a future virtualization host.
 
 Project page: https://datatidehh.github.io/cisco-switching-lab/
 
@@ -9,6 +9,8 @@ Project page: https://datatidehh.github.io/cisco-switching-lab/
 This repository documents a small physical Cisco lab with an emphasis on reproducible procedures, verification and public-safe technical documentation.
 
 The project supports my Data/BI-oriented portfolio by demonstrating the infrastructure fundamentals behind operational systems and the data they produce. It is not presented as a production network or as a change of specialization into network administration.
+
+A future Proxmox host may later be connected as a lab service platform. That integration is currently a documented roadmap only: no dedicated Proxmox hardware or verified Proxmox deployment is claimed by this repository.
 
 ## Current Verified Baseline
 
@@ -52,6 +54,9 @@ Real addresses, hostnames, serial numbers, MAC addresses, credentials and privat
 - inter-VLAN routing
 - ACL and troubleshooting exercises
 - future expansion with a second switch and a Cisco IOS/IOS XE router
+- staged network integration for a future Proxmox virtualization host
+
+The Proxmox-related work remains limited to network design, segmentation and validation. Hypervisor installation, VM and LXC lifecycle, storage, backup and API automation belong in the planned separate `proxmox-virtualization-lab` repository.
 
 ## Documentation
 
@@ -68,13 +73,16 @@ Real addresses, hostnames, serial numbers, MAC addresses, credentials and privat
 | [Basic switch security](docs/08-basic-switch-security.md) | Management and hardening notes |
 | [IOS upgrade workflow](docs/09-ios-upgrade-workflow.md) | Sanitized, verified maintenance workflow |
 | [NTP and time synchronization](docs/10-ntp-and-time-synchronization.md) | Local time-source architecture and verification |
+| [Proxmox network integration roadmap](docs/11-proxmox-network-integration-roadmap.md) | Planned staged connection of a future virtualization host |
 | [Lessons learned](docs/99-lessons-learned.md) | Practical findings from the physical lab |
 
-## Relationship to the Data Project
+## Relationship to Connected Labs
 
-This repository focuses on the device, Cisco CLI, switching concepts and operational maintenance.
+This repository focuses on the physical device, Cisco CLI, switching concepts and operational maintenance.
 
-The related [network-operations-data-lab](https://github.com/DataTideHH/network-operations-data-lab) focuses on transforming sanitized operational records into structured sample data, Python workflows, SQL checks, data-quality reports and BI-oriented outputs.
+The planned `proxmox-virtualization-lab` will focus on the future virtualization host, virtual machines, LXC containers, storage, backup, access control and API-based inventory. It does not exist as an implemented hardware lab yet.
+
+The related [network-operations-data-lab](https://github.com/DataTideHH/network-operations-data-lab) focuses on transforming sanitized operational records from network infrastructure and, later, virtualization infrastructure into structured sample data, Python workflows, SQL checks, data-quality reports and BI-oriented outputs.
 
 ## Public-Safety Policy
 
@@ -88,9 +96,10 @@ Do not publish:
 - public IP addresses or VPN addresses
 - private hostnames and device descriptions
 - complete real home-network topology
+- real hypervisor API tokens, cluster fingerprints or backup credentials
 
 Use placeholders and sanitized examples throughout the repository.
 
 ## Status
 
-Active physical learning lab. The management and maintenance baseline is verified; the multi-switch VLAN, STP and EtherChannel stages are planned as the next expansion.
+Active physical learning lab. The management and maintenance baseline is verified; the multi-switch VLAN, STP and EtherChannel stages are planned as the next expansion. Proxmox integration is a future roadmap item pending suitable dedicated x86 hardware.
