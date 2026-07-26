@@ -80,9 +80,13 @@ The Proxmox-related work remains limited to network design, segmentation and val
 
 This repository focuses on the physical device, Cisco CLI, switching concepts and operational maintenance.
 
+The [IPv4 Subnet Calculator Multilang](https://datatidehh.github.io/ipv4-subnet-calculator-multilang/) complements the lab with a tested Java 21, C++20 and Python 3.12 implementation of IPv4/CIDR calculations. It connects the addressing concepts used in CCNA-oriented work with explicit validation, shared fachliche test cases and GitHub Actions.
+
 The planned [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab) will focus on the future virtualization host, virtual machines, LXC containers, storage, backup, access control and API-based inventory. It does not exist as an implemented hardware lab yet.
 
 The related [network-operations-data-lab](https://github.com/DataTideHH/network-operations-data-lab) focuses on transforming sanitized operational records from network infrastructure and, later, virtualization infrastructure into structured sample data, Python workflows, SQL checks, data-quality reports and BI-oriented outputs.
+
+The [Spring Boot Process API Basics](https://datatidehh.github.io/spring-boot-process-api-basics/) repository represents a separate software progression: from focused command-line logic and network fundamentals toward a small layered Java REST API for structured operational records.
 
 ## Public-Safety Policy
 
