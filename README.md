@@ -33,6 +33,12 @@ Verified as of July 2026:
 
 Real addresses, hostnames, serial numbers, MAC addresses, credentials and private topology details are intentionally excluded.
 
+## Platform Lifecycle Context
+
+Cisco announced end of sale and end of life for the `WS-C3560CX-8PC-S`. The published last date of support for this model is **30 April 2029**.
+
+The switch remains useful as a controlled physical learning platform for Cisco IOS, switching, maintenance and troubleshooting. It is not presented as a recommendation for a new production deployment.
+
 ## Repository Scope
 
 ### Completed foundation
@@ -47,7 +53,7 @@ Real addresses, hostnames, serial numbers, MAC addresses, credentials and privat
 ### Planned CCNA-oriented labs
 
 - VLANs and access ports
-- 802.1Q trunks
+- 802.1Q trunks with a dedicated unused native VLAN
 - Spanning Tree Protocol
 - EtherChannel with LACP
 - management VLAN design
@@ -56,6 +62,19 @@ Real addresses, hostnames, serial numbers, MAC addresses, credentials and privat
 - future expansion with a second switch and a Cisco IOS/IOS XE router
 - staged network integration for a future Proxmox virtualization host
 
+The planned VLAN design keeps roles separate:
+
+| VLAN | Role |
+|---:|---|
+| 10 | test clients |
+| 20 | lab systems |
+| 30 | test services and servers |
+| 99 | management |
+| 998 | unused native VLAN for lab trunks |
+| 999 | parking VLAN for unused access ports |
+
+VLAN 998 is intended only as the matching native VLAN on both ends of planned lab trunks. It should have no SVI and no connected end devices. VLAN 999 remains separate for administratively shut down unused access ports.
+
 The Proxmox-related work remains limited to network design, segmentation and validation. Hypervisor installation, VM and LXC lifecycle, storage, backup and API automation belong in the planned separate [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab) repository.
 
 ## Documentation
@@ -63,7 +82,7 @@ The Proxmox-related work remains limited to network design, segmentation and val
 | Document | Purpose |
 |---|---|
 | [Lab scope](docs/00-lab-scope.md) | Boundaries, learning goals and portfolio role |
-| [Hardware inventory](docs/01-hardware-inventory.md) | Current verified device and planned expansion |
+| [Hardware inventory](docs/01-hardware-inventory.md) | Current verified device, lifecycle context and planned expansion |
 | [Topology](docs/02-topology.md) | Public-safe current and future topology |
 | [Initial baseline](docs/03-initial-baseline.md) | Baseline and validation commands |
 | [VLAN and trunk lab](docs/04-vlan-and-trunk-lab.md) | Planned Layer 2 segmentation lab |
@@ -74,19 +93,22 @@ The Proxmox-related work remains limited to network design, segmentation and val
 | [IOS upgrade workflow](docs/09-ios-upgrade-workflow.md) | Sanitized, verified maintenance workflow |
 | [NTP and time synchronization](docs/10-ntp-and-time-synchronization.md) | Local time-source architecture and verification |
 | [Proxmox network integration roadmap](docs/11-proxmox-network-integration-roadmap.md) | Planned staged connection of a future virtualization host |
+| [Official references and learning resources](docs/12-official-references.md) | Cisco primary sources and related curated references |
 | [Lessons learned](docs/99-lessons-learned.md) | Practical findings from the physical lab |
 
 ## Relationship to Connected Labs
 
 This repository focuses on the physical device, Cisco CLI, switching concepts and operational maintenance.
 
-The [IPv4 Subnet Calculator Multilang](https://datatidehh.github.io/ipv4-subnet-calculator-multilang/) complements the lab with a tested Java 21, C++20 and Python 3.12 implementation of IPv4/CIDR calculations. It connects the addressing concepts used in CCNA-oriented work with explicit validation, shared fachliche test cases and GitHub Actions.
+The [IPv4 Subnet Calculator Multilang](https://datatidehh.github.io/ipv4-subnet-calculator-multilang/) complements the lab with a tested Java 21, C++20 and Python 3.12 implementation of IPv4/CIDR calculations. It connects the addressing concepts used in CCNA-oriented work with explicit validation, shared domain test cases and GitHub Actions.
 
 The planned [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab) will focus on the future virtualization host, virtual machines, LXC containers, storage, backup, access control and API-based inventory. It does not exist as an implemented hardware lab yet.
 
 The related [network-operations-data-lab](https://github.com/DataTideHH/network-operations-data-lab) focuses on transforming sanitized operational records from network infrastructure and, later, virtualization infrastructure into structured sample data, Python workflows, SQL checks, data-quality reports and BI-oriented outputs.
 
 The [Spring Boot Process API Basics](https://datatidehh.github.io/spring-boot-process-api-basics/) repository represents a separate software progression: from focused command-line logic and network fundamentals toward a small layered Java REST API for structured operational records.
+
+The [`open-learning-resources`](https://github.com/DataTideHH/open-learning-resources) repository contains the curated Cisco, Networking Academy and RFC references used alongside this lab.
 
 ## Public-Safety Policy
 
