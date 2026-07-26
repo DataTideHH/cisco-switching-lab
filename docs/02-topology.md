@@ -51,12 +51,19 @@ The Proxmox host shown here is a future design target only. No dedicated x86 hos
 | VLAN | Example name | Purpose |
 |---:|---|---|
 | 10 | CLIENTS | test client devices |
-| 20 | LAB | lab services and experiments |
+| 20 | LAB | lab systems and experiments |
 | 30 | SERVERS | data, application and future virtualization services |
 | 99 | MGMT | network and future hypervisor management |
-| 999 | BLACKHOLE | unused ports |
+| 998 | NATIVE-UNUSED | matching unused native VLAN on lab trunks |
+| 999 | BLACKHOLE | unused access ports, administratively shut down |
 
 These VLANs are a roadmap, not a claim about the current productive home LAN.
+
+VLAN 998 and VLAN 999 serve different purposes:
+
+- VLAN 998 is reserved for untagged traffic on planned lab trunks. It should match on both trunk ends, have no SVI and have no connected end devices.
+- VLAN 999 is a parking VLAN for unused access ports. Those ports should also be shut down.
+- VLAN 99 remains the management VLAN and is not reused as the native VLAN.
 
 A future Proxmox integration should begin conservatively with one access VLAN. VLAN-aware bridges and an 802.1Q trunk should only be added after the basic host installation, console recovery path and switch rollback procedure have been validated.
 
@@ -74,5 +81,7 @@ A future Proxmox integration should begin conservatively with one access VLAN. V
 - retain console access as an independent recovery path
 - connect a future virtualization host through a simple access port before testing trunks
 - separate management traffic from guest and service traffic when the lab reaches that stage
+- use an unused, matching native VLAN on both ends of each planned lab trunk
+- allow only explicitly required VLANs on trunks
 - document verification and rollback before each disruptive change
 - publish only sanitized topology information

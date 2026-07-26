@@ -29,6 +29,28 @@ Verified public-safe baseline:
 
 The serial number, real hostname, management address, MAC addresses and private port descriptions are not published.
 
+## Product Lifecycle
+
+Cisco has announced end of sale and end of life for this model.
+
+| Milestone | Published date |
+|---|---|
+| End-of-life announcement | 1 May 2023 |
+| End of sale | 30 April 2024 |
+| End of software maintenance releases | 30 April 2025 |
+| End of vulnerability and security support | 30 April 2029 |
+| Last date of support | 30 April 2029 |
+| Cisco replacement listed in the EOL notice | `C9200CX-8P-2X2G-A` |
+
+Portfolio implication:
+
+- the device remains suitable for a controlled physical learning lab
+- the repository can document legacy IOS maintenance, CLI verification and switching fundamentals honestly
+- the model is not presented as a recommendation for a new production deployment
+- any future purchase decision should consider current support status, licensing, cost and the specific learning goal
+
+Official lifecycle details are linked from [Official References and Learning Resources](12-official-references.md).
+
 ## Useful Baseline Commands
 
 ```text
@@ -58,8 +80,12 @@ The preferred next stage is:
 - a used Cisco IOS or IOS XE router for routing, NAT, DHCP, ACL and WAN-edge labs
 - copper trunks first; SFP links can be added later when they serve a specific learning goal
 
+A second EOL lab switch would be acquired only as a low-cost compatible training device, not as a current production recommendation.
+
 A legacy Catalyst 2950SX and a 1000BASE-SX fiber link remain optional ideas, not part of the current verified baseline.
 
 ## Selection Rationale
 
-A second compatible switch adds more immediate CCNA value than replacing the current device with a new Catalyst 9200CX. It enables practical work with trunks, STP, EtherChannel and redundant Layer 2 paths while keeping cost and configuration differences manageable.
+A second compatible switch adds more immediate CCNA value than replacing the current device solely for this lab. It enables practical work with trunks, STP, EtherChannel and redundant Layer 2 paths while keeping cost and configuration differences manageable.
+
+A newer Catalyst 9200CX would provide a more current production platform and support lifecycle, but its price and licensing make it a separate procurement decision rather than a prerequisite for the present learning objectives.

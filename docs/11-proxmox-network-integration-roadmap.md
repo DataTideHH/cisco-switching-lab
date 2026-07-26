@@ -10,6 +10,18 @@ The future Proxmox host should provide a controlled service platform for virtual
 
 The hypervisor itself will be documented separately in [`proxmox-virtualization-lab`](https://github.com/DataTideHH/proxmox-virtualization-lab). Sanitized inventory and monitoring data will later be processed in `network-operations-data-lab`.
 
+## Planned VLAN Roles
+
+| VLAN | Role |
+|---:|---|
+| 20 | initial lab access network |
+| 30 | later service and server network |
+| 99 | later dedicated management network |
+| 998 | unused native VLAN for an optional trunk |
+| 999 | parking VLAN for unused switch access ports |
+
+VLAN 998 should not have an SVI or connected end devices. VLAN 99 remains a tagged management VLAN when a trunk is introduced; it is not reused as the native VLAN.
+
 ## Staged Integration
 
 ### Stage 0: design before hardware purchase
@@ -17,6 +29,7 @@ The hypervisor itself will be documented separately in [`proxmox-virtualization-
 - define minimum hardware and network-interface requirements
 - reserve a lab-only switch port
 - decide whether the first connection uses VLAN 20 or VLAN 30
+- verify that planned subnets do not overlap with the home LAN, VPNs or other labs
 - document recovery and rollback procedures
 - keep the productive home LAN unchanged
 
@@ -27,21 +40,39 @@ The hypervisor itself will be documented separately in [`proxmox-virtualization-
 - validate link speed, duplex, reachability and error counters
 - keep hypervisor management and initial guests in one controlled lab VLAN
 - verify local console access before testing remote administration
+- record the switch port, host interface and bridge relationship using sanitized identifiers
 
 ### Stage 2: management separation
 
-- move hypervisor management to a dedicated management VLAN
+- move hypervisor management to dedicated VLAN 99
 - test switch SVI, gateway and ACL behavior where applicable
 - document which devices are allowed to reach the management interface
 - confirm that guest networks cannot reach management services unless explicitly allowed
+- retain a local host console or access-port recovery path
 
 ### Stage 3: optional 802.1Q trunk
 
-- configure a dedicated switch port as a trunk
-- allow only explicitly required VLANs
-- map VLANs to Proxmox Linux bridges or VLAN-aware bridges
+- configure a dedicated switch port as a static trunk
+- use VLAN 998 as the matching unused native VLAN on both ends
+- carry management VLAN 99 and required service VLANs as tagged VLANs
+- allow only explicitly required VLANs, including VLAN 998 for the native role
+- map tagged VLANs to Proxmox Linux bridges or VLAN-aware bridges
 - validate native VLAN assumptions and tagging end to end
-- keep an independent console recovery path available
+- confirm that VLAN 998 has no SVI and no endpoint traffic
+- keep an independent console and access-port recovery path available
+
+Conceptual switch-side pattern:
+
+```text
+interface GigabitEthernet0/X
+ description FUTURE_PROXMOX_TRUNK
+ switchport mode trunk
+ switchport trunk native vlan 998
+ switchport trunk allowed vlan 20,30,99,998
+ no shutdown
+```
+
+The exact interface and allowed VLAN list must match the final host design and must be verified before use.
 
 ### Stage 4: operational data export
 
@@ -58,6 +89,8 @@ The hypervisor itself will be documented separately in [`proxmox-virtualization-
 - no unexpected CRC, input or output errors appear
 - access VLAN or trunk configuration matches the documented design
 - only intended VLANs are allowed on a trunk
+- native VLAN 998 matches on both ends and has no endpoint use
+- management VLAN 99 remains tagged on the trunk
 - STP state is understood and documented
 
 ### Layer 3 and management
@@ -66,12 +99,14 @@ The hypervisor itself will be documented separately in [`proxmox-virtualization-
 - default gateway and DNS behavior are validated
 - NTP provides consistent timestamps across switch and hypervisor
 - SSH and web management do not require public port forwarding
+- guest and service networks cannot reach management unless explicitly permitted
 
 ### Recovery
 
 - local console access is available
 - previous switch configuration can be restored
 - an access-port fallback is documented before trunk experiments
+- the host can be returned to the known single-VLAN baseline
 - real credentials, addresses, fingerprints and tokens are excluded from GitHub
 
 ## Repository Boundaries
