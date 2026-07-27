@@ -1,5 +1,7 @@
 # Cisco Switching Lab
 
+[![GitHub Pages](https://github.com/DataTideHH/cisco-switching-lab/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/DataTideHH/cisco-switching-lab/actions/workflows/pages/pages-build-deployment)
+
 Physical Cisco Catalyst 3560CX lab documenting secure management, IOS maintenance, time synchronization, CCNA-oriented switching practice and the planned network foundation for a future virtualization host.
 
 Project page: https://datatidehh.github.io/cisco-switching-lab/
